@@ -1,0 +1,9 @@
+#!/bin/sh
+
+export_ () { export $1="$2" ; }
+
+main() {
+
+}
+
+main $*

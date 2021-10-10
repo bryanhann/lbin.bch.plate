@@ -1,0 +1,28 @@
+#!/bin/sh
+PLATES=$(dirname $0)/bch.plate.plates
+PROG=$(basename $0)
+src=$1
+dst=$2
+
+usage () {
+    echo USAGE: 
+    echo "        $PROG PLATE dst"
+    echo
+    echo PLATES:
+    for plate in $(ls -1 $PLATES); do
+        echo "        $plate"
+    done
+    exit
+}
+
+
+[ -z "$1" ] && usage
+[ -z "$2" ] && usage
+
+src=${PLATES}/$1
+dst=$2
+
+[ ! -f ${src} ] && usage
+[   -f ${dst} ] && echo dst exists && exit
+cp ${src} ${dst}
+[ "$(basename $src)" = "source" ] || chmod +x ${dst}

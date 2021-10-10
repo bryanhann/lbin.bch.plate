@@ -1,0 +1,4 @@
+#!/source/this/sh
+
+export_ () { export $1="$2" ; }
+
